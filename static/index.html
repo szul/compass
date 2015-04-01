@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Compass</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("button[name=calculate]").click(function() {
+                    if ($('input[name=x]').val() == '') {
+                        $('input[name=x]').val('0');
+                    }
+                    if ($('input[name=y]').val() == '') {
+                        $('input[name=y]').val('0');
+                    }
+                    $.ajax({
+                        url: "/compass/"
+                        , type: "GET"
+                        , dataType: "json"
+                        , data: { x: $('input[name=x]').val(), y: $('input[name=y]').val() }
+                        , success: function (resp) {
+                            $('input[name=bisection]').val(resp.bisection);
+                        }
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <fieldset>
+            <legend>Compass Direction</legend>
+            <label for="x">Compass #1</label>
+            <input type="text" name="x" />
+            <label for="y">Compass #2</label>
+            <input type="text" name="y" />
+            <button name="calculate">Calculate Bisection</button>
+            <label for="bisection">Bisection</label>
+            <input type="text" name="bisection" readonly="readonly" />
+        </fieldset>
+    </body>
+</html>
