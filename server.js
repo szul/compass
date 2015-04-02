@@ -26,6 +26,11 @@ app.get('/compass/', function (req, res) {
     
 });
 
+/*
+ *For Azure deployment
+ */
+//app.listen(process.env.port);
+
 var server = app.listen(3000, function () {
   console.log('Listening on localhost:3000');
 });
