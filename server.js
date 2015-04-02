@@ -19,7 +19,7 @@ app.get('/compass/', function (req, res) {
             return (n < 0) ? 360 + n : n;
         }
         else {
-            return Math.abs(_x + _y) / 2;
+            return (_x + _y) / 2;
         }
     }
     res.json({ bisection: getBisection(req.query.x, req.query.y) });
