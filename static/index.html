@@ -6,13 +6,26 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
         <script type="text/javascript">
             $(document).ready(function() {
+                $('input').blur(function() {
+                    if ($(this).val() == '') {
+                        $(this).val('0');
+                    }
+                    if (isNaN($(this).val())) {
+                        alert('Input must be a number.');
+                        $(this).val('0');
+                    }
+                    else {
+                        if (parseInt($(this).val(), 10) > 360) {
+                            alert('Input cannot be greater than 360.');
+                            $(this).val('360');
+                        }
+                        if (parseInt($(this).val(), 10) < 0) {
+                            alert('Input cannot be less than 0.');
+                            $(this).val('0');
+                        }
+                    }
+                });
                 $("button[name=calculate]").click(function() {
-                    if ($('input[name=x]').val() == '') {
-                        $('input[name=x]').val('0');
-                    }
-                    if ($('input[name=y]').val() == '') {
-                        $('input[name=y]').val('0');
-                    }
                     $.ajax({
                         url: "/compass/"
                         , type: "GET"
