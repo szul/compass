@@ -1,0 +1,14 @@
+{
+  "name": "compass",
+  "version": "1.0.0",
+  "description": "Get the bisection of the acute angle of two compass measurements",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael Szul",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.12.3",
+  }
+}
